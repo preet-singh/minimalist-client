@@ -9,6 +9,10 @@ import ItemListNav from '../ItemListNav/ItemListNav';
 import ItemListMain from '../ItemListMain/ItemListMain';
 import ItemPageMain from '../ItemPageMain/ItemPageMain';
 import ItemPageNav from '../ItemListNav/ItemListNav';
+import LoginPage from '../LoginPage/LoginPage';
+import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import config from '../../config';
+import './App.css';
 
 
 
@@ -17,26 +21,61 @@ class App extends Component {
     inventory: [],
     items: []
   }
-  componentDidMount() {
+  componentDidMount(){
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/items`),
+      fetch(`${config.API_ENDPOINT}/inventory`)
+    ])
+      .then(([itemsRes, inventoriesRes]) => {
+        if (!itemsRes.ok)
+          return itemsRes.json().then(e => Promise.reject(e));
+        if (!inventoriesRes.ok)
+          return inventoriesRes.json().then(e => Promise.reject(e));
 
+        return Promise.all([itemsRes.json(), inventoriesRes.json()]);
+      })
+      .then(([items, inventory]) => {
+        this.setState({ items, inventory });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
   }
 
-  renderMainRoutes() {
-    return (
-      <>
-        {['/', '/inventory/:inventoryId'].map(path => (
-          <Route
-            exact
-            key={path}
-            path={path}
-            component={ItemListMain}
-          />
-        ))}
-        <Route path="/item/:itemId" component={ItemPageMain} />
-        <Route path='/add-inventory' component={AddInventory} />
-        <Route path='/add-item' component={AddItem} />
-      </>
-    );
+  handleDeleteItem = itemId => {
+    this.setState({
+      items: this.state.items.filter(item => item.id !== item)
+    });
+  }
+
+  handleDeleteInventory = inventoryId => {
+    this.setState({
+      inventories: this.state.inventories.filter(inventory => inventory.id !== inventory)
+    });
+  }
+
+  addNewItem = newItem => {
+    this.setState({
+      items: this.state.items,
+      newItem
+    }, this.componentDidMount());
+  }
+
+  editItem = editItem => {
+    this.setState({
+      items: this.state.items.map(i => 
+        (i.id !== editItem.id) ? i : editItem
+        )
+    });
+  }
+
+  addNewInventory = newInventory => {
+    this.setState({
+      inventories: [
+        ...this.state.inventories,
+        newInventory
+      ]
+    }, this.componentDidMount());
   }
 
   renderNavRoutes(){
@@ -50,9 +89,29 @@ class App extends Component {
             component={ItemListNav}
           />
         ))}
+        <Route path="/login" component={LoginPage} />
         <Route path="/item/:itemId" component={ItemPageNav} />
         <Route path="/add-inventory" component={ItemPageNav} />
         <Route path="/add-item" component={ItemPageNav} />
+      </>
+    );
+  }
+
+  renderMainRoutes() {
+    return (
+      <>
+        {['/', '/inventory/:inventoryId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={ItemListMain}
+          />
+        ))}
+        <Route path="/registration" component={RegistrationPage} />
+        <Route path="/item/:itemId" component={ItemPageMain} />
+        <Route path='/add-inventory' component={AddInventory} />
+        <Route path='/add-item' component={AddItem} />
       </>
     );
   }
@@ -76,7 +135,7 @@ class App extends Component {
               <Link to="/">Minimalist</Link>{' '}
             </h1>
           </header>
-          {/*<LandingPage />*/}
+          <LandingPage />
           <ErrorPage>
             <main className="App_main">{this.renderMainRoutes()}</main>
           </ErrorPage>
