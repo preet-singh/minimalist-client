@@ -22,7 +22,7 @@
 //       item_description: this.state.description,
 //       inventory_id: this.state.inventoryId,
 //       item_action: this.state.action,
-//       date_modified: this.state.modified
+//       //date_modified: this.state.modified
 //     };
 
 //     fetch(`${config.API_ENDPOINT}/items`, {
@@ -60,9 +60,9 @@
 //       this.setState({ action: e.target.value });
 //   }
 
-//   getItemModified = (e) => {
-//     this.setState({ modified: new Date().toLocaleString() });
-//   }
+// //   getItemModified = (e) => {
+// //     this.setState({ modified: new Date().toLocaleString() });
+// //   }
 
 //   validateItemName = () => {
 //     let item = this.state.item;

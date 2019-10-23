@@ -14,8 +14,11 @@ export default class AddInventory extends Component {
     e.preventDefault();
 
     const newInventory = {
-      inventory_name: this.state.name
+      inventory_name: this.state.name,
+      //TODO: make actual logged in user
+      user_id: 1
     };
+
 
     fetch(`${config.API_ENDPOINT}/inventory`, {
       method: "POST",
@@ -26,9 +29,11 @@ export default class AddInventory extends Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
+        else return res.json();
       })
-      .then(() => {
-        this.context.addInventory(newInventory);
+      .then( (data) => {
+        //console.dir(data);
+        this.context.addInventory(data);
         this.props.history.push('/');
       })
       .catch(error => {

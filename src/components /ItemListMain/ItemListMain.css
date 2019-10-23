@@ -1,0 +1,20 @@
+
+.ItemListMain ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .ItemListMain_button-container {
+    max-width: 380px;
+    margin: 0 10px;
+  }
+  
+  .ItemListMain_add-note-button {
+    margin: 0 auto 20px;
+  }
+  .ItemListMain_add-note-button:hover {
+    background-color: #29862e;
+    color: white;
+  }
+  

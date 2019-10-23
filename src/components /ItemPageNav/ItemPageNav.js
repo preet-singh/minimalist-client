@@ -19,12 +19,12 @@ export default class ItemPageNav extends React.Component {
   static contextType = InventoryContext;
 
   render() {
-    const { items, inventories, } = this.context
+    const { items, inventory, } = this.context
     const { itemId } = this.props.match.params
     const item = findItem(items, itemId) || {}
-    const inventory = findInventory(inventories, item.inventory_id)
+    const inven = findInventory(inventory, item.inventory_id)
     return (
-      <div className='NotePageNav'>
+      <div className='ItemPageNav'>
         <Button
           tag='button'
           role='link'

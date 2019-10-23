@@ -20,17 +20,22 @@ export default class ItemPageMain extends React.Component {
   render() {
     const { items=[] } = this.context
     const { itemId } = this.props.match.params
-    const item = findItem(items, itemId) || { item_description: '' }
+    const item = findItem(items, Number(itemId)) || { item_description: 'test desc', item_action: 'test action'}
+    console.log(item);
     return (
       <section className='ItemPageMain'>
         <Item
           id={item.id}
           name={item.item_name}
-          modified={Date(item.date_modified).toString()}
           onDeleteItem={this.handleDeleteItem}
         />
         <div className='ItemPageMain_description'>
           {item.item_description.split(/\n \r|\n/).map((para, i) =>
+            <p key={i}>{para}</p>
+          )}
+        </div>
+        <div className='ItemPageMain_action'>
+          {item.item_action.split(/\n \r|\n/).map((para, i) =>
             <p key={i}>{para}</p>
           )}
         </div>

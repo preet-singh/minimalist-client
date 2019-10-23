@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item component renders a .Item by default 1`] = `
+<div
+  className="Item"
+>
+  <h2
+    className="Item_title"
+  >
+    <Link
+      to="/item/undefined"
+    />
+  </h2>
+  <button
+    className="Item_delete"
+    onClick={[Function]}
+    type="button"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="trash-alt"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      swapOpacity={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+     
+    delete
+  </button>
+</div>
+`;
+
+exports[`Item component renders the Item given props 1`] = `
+<div
+  className="Item"
+>
+  <h2
+    className="Item_title"
+  >
+    <Link
+      to="/item/a"
+    >
+      test-class-name
+    </Link>
+  </h2>
+  <button
+    className="Item_delete"
+    onClick={[Function]}
+    type="button"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="trash-alt"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      swapOpacity={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+     
+    delete
+  </button>
+</div>
+`;

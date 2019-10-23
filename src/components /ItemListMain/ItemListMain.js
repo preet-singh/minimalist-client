@@ -20,6 +20,9 @@ export default class ItemListMain extends React.Component {
     const { inventoryId } = this.props.match.params
     const { items=[] } = this.context
     const itemsForInventory = getItemsForInventory(items, inventoryId)
+    // console.log(inventoryId);
+    // console.dir(items);
+    // console.dir(itemsForInventory);
     return (
       <section className='ItemListMain'>
         <ul>
@@ -28,7 +31,7 @@ export default class ItemListMain extends React.Component {
               <Item
                 id={item.id}
                 name={item.item_name}
-                modified={Date(item.date_modified).toString()}
+                
               />
             </li>
           )}

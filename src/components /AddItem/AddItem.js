@@ -22,7 +22,6 @@ export default class AddItem extends Component {
       item_description: this.state.description,
       inventory_id: this.state.inventoryId,
       item_action: this.state.action,
-      date_modified: this.state.modified
     };
 
     fetch(`${config.API_ENDPOINT}/items`, {
@@ -34,9 +33,10 @@ export default class AddItem extends Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
+        else return res.json();
       })
-      .then(() => {
-        this.context.addItem(newItem);
+      .then( (data) => {
+        this.context.addItem(data);
         this.props.history.push('/');
       })
       .catch(error => {
@@ -60,12 +60,9 @@ export default class AddItem extends Component {
       this.setState({ action: e.target.value });
   }
 
-  getItemModified = (e) => {
-    this.setState({ modified: new Date().toLocaleString() });
-  }
 
   validateItemName = () => {
-    let item = this.state.item;
+    let item = this.state.name;
 
     if (!item) {
       return 'Item name is required'
@@ -88,7 +85,7 @@ export default class AddItem extends Component {
     let inventory = this.state.inventoryId;
 
     if (!inventory) {
-      return 'Inventory id is required'
+      return 'Inventory selection is required'
     } else {
       return null
     }
@@ -122,7 +119,7 @@ export default class AddItem extends Component {
         <div>
           <select name='Choose inventory...' value={this.state.inventoryId} onChange={ this.getItemInventoryId }>
             <option key="default" value={null}>Select Inventory</option>
-            {inventory.map((inventory) => <option key={Number(inventory.id)} value={inventory.id}>{inventory.inventory_name}</option>)}
+            {inventory.map((inven) => <option key={Number(inven.id)} value={inven.id}>{inven.inventory_name}</option>)}
           </select>
           {this.validateInventory && <p className='validationElement'>{this.validateInventory()}</p>}
         </div>

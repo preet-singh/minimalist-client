@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import InventoryContext from '../../InventoryContext'
 import config from '../../config'
@@ -38,7 +37,7 @@ export default class Item extends React.Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { name, id } = this.props
     return (
       <div className='Item'>
         <h2 className='Item_title'>
@@ -53,17 +52,8 @@ export default class Item extends React.Component {
         >
           <FontAwesomeIcon icon='trash-alt' />
           {' '}
-          remove
+          delete
         </button>
-        <div className='Item_dates'>
-          <div className='Item_dates-modified'>
-            Modified
-            {' '}
-            <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
-            </span>
-          </div>
-        </div>
       </div>
     )
   }

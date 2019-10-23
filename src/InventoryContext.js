@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default React.createContext({
-  inventory: [],
+  inventories: [],
   items: [],
   addInventory: () => {},
   deleteInventory: () => {},
