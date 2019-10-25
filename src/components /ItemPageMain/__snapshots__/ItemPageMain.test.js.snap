@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemPageMain component renders a .ItemPageMain by default 1`] = `
+<section
+  className="ItemPageMain"
+>
+  <Item
+    onDeleteItem={[Function]}
+  />
+  <div
+    className="ItemPageMain_description"
+  >
+    <p
+      key="0"
+    >
+      test desc
+    </p>
+  </div>
+  <div
+    className="ItemPageMain_action"
+  >
+    <p
+      key="0"
+    >
+      test action
+    </p>
+  </div>
+</section>
+`;
+
+exports[`ItemPageMain component renders a Item with item prop 1`] = `
+<Item
+  onDeleteItem={[Function]}
+/>
+`;
+
+exports[`ItemPageMain component splits the description by \\n or \\n\\r, with a p foreach 1`] = `null`;
+
+exports[`ItemPageMain component splits the description by \\n or \\n\\r, with a p foreach 2`] = `null`;

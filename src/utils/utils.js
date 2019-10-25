@@ -1,10 +1,10 @@
 import React from 'react'
-import { format as formatDate } from 'date-fns'
+//import { format as formatDate } from 'date-fns'
 import './utils.css'
 
-export function NiceDate({ date, format='Do MMMM YYYY' }) {
-  return formatDate(date, format)
-}
+// export function NiceDate({ date, format='Do MMMM YYYY' }) {
+//   return formatDate(date, format)
+// }
 
 export function Hyph() {
   return <span className='Hyph'>{' - '}</span>

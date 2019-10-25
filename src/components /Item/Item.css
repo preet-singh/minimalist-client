@@ -1,56 +1,52 @@
 
 .Item {
     --note-height: 88px;
-    background-color: #010d1e;
+    background-color: #00264d;
     color: #cacaca;
-    height: var(--note-height);
+    height: 70px;
     margin-bottom: 8px;
-    max-width: 380px;
+    max-width: 300px;
     padding: 8px 0 8px 8px;
     position: relative;
   }
   
-  .Item__delete {
-    --note-button-height: 32px;
-    background-color: #041a3a;
+  .Item_delete {
+    color: #ff0000;
+    position: absolute;
+    bottom: 0;
+    background-color:#00264d;
     border: 0;
-    color: #bdbcbc;
-    float: right;
-    font-size: 12px;
-    height: var(--note-button-height);
-    position: relative;
-    top: calc((var(--note-button-height) + 32px) * -1);
-    transform-origin: right bottom;
-    transform: rotate(-90deg);
-    width: calc(var(--note-height));
+    font-size: 15px;
   }
-  .Item__delete:hover {
+
+  .Item_delete:hover {
     background-color: #bd0909;
     color: white;
     cursor: pointer;
     font-weight: bold;
   }
   
-  .Item__title {
+  .Item_title {
     font-family: var(--custom-font);
     font-size: 20px;
     margin: 0;
     max-width: 80%;
     min-height: 24px;
   }
-  .Item__title a {
+  .Item_title a {
     color: #cacaca;
     display: block;
     text-decoration: none;
   }
-  .Item__title a:hover {
+  .Item_title a:hover {
     color: #FFB72F;
   }
-  
-  .Item__dates {
-    bottom: 8px;
-    color: #a7a5a5;
-    font-size: 14px;
+
+  .Item_edit {
+    color: #00b300;
+    float: right;
     position: absolute;
-  }
-  
+    background-color:#00264d;
+    border: 0;
+    font-size: 15px;
+  }  

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MinimalistForm component renders a form.MinimalistForm by default 1`] = `
+<form
+  action="#"
+  className="Minimalist-form "
+/>
+`;
+
+exports[`MinimalistForm component renders the MinimalistForm given props 1`] = `
+<form
+  action="#"
+  className="Minimalist-form test-class-name"
+  data-other="test-other-prop"
+>
+  <p>
+    test children
+  </p>
+</form>
+`;

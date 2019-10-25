@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import InventoryContext from '../../InventoryContext'
 import ErrorPage from '../ErrorPage/ErrorPage';
-//import LandingPage from '../LandingPage/LandingPage.js';
+import LandingPage from '../LandingPage/LandingPage.js';
 import AddInventory from '../AddInventory/AddInventory';
-//import DeleteInventory from '../DeleteInventory /DeleteInventory';
 import AddItem from '../AddItem/AddItem';
 import ItemListNav from '../ItemListNav/ItemListNav';
 import ItemListMain from '../ItemListMain/ItemListMain';
@@ -14,7 +13,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import config from '../../config';
 import './App.css';
-
 
 
 class App extends Component {
@@ -52,7 +50,7 @@ class App extends Component {
   handleDeleteInventory = inventoryId => {
     this.setState({
       inventory: this.state.inventory.filter(inventory => inventory.id !== inventoryId)
-    });
+    })
   }
 
   addNewItem = newItem => {
@@ -62,10 +60,10 @@ class App extends Component {
     }, this.componentDidMount());
   }
 
-  editItem = editItem => {
+  updateItem = updateItem => {
     this.setState({
       items: this.state.items.map(i => 
-        (i.id !== editItem.id) ? i : editItem
+        (i.id !== updateItem.id) ? i : updateItem
         )
     });
   }
@@ -112,7 +110,6 @@ class App extends Component {
         <Route path="/registration" component={RegistrationPage} />
         <Route path="/item/:itemId" component={ItemPageMain} />
         <Route path='/add-inventory' component={AddInventory} />
-        {/* <Route path='/inventory/:inventoryId' component={DeleteInventory} /> */}
         <Route path='/add-item' component={AddItem} />
       </>
     );
@@ -126,7 +123,7 @@ class App extends Component {
       deleteInventory: this.handleDeleteInventory,
       deleteItem: this.handleDeleteItem,
       addItem: this.addNewItem,
-      editItem: this.editItem,
+      updateItem: this.updateItem,
     };
     return (
       <InventoryContext.Provider value={value}>
@@ -139,7 +136,7 @@ class App extends Component {
               <Link to="/login">Login</Link>{' '}
             </h1>
           </header>
-          
+          {/* <LandingPage /> */}
           <ErrorPage>
             <main className="App_main">{this.renderMainRoutes()}</main>
           </ErrorPage>

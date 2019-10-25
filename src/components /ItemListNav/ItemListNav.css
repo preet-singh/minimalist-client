@@ -1,25 +1,32 @@
 
-.NoteListNav__list {
+.ItemListNav_list {
     list-style-type: none;
     margin: 130px 0 0;
     padding: 0;
   }
   
-  .NoteListNav__button-wrapper {
-    margin: 0 0 0 auto;
-    max-width: 180px;
+  .ItemListNav_button-wrapper {
+    margin: 0 0 0 20px;
+    max-width: 170px;
   }
   
-  .NoteListNav__add-folder-button {
+  .ItemListNav_add-inventory-button {
     margin: 20px auto;
   }
-  .NoteListNav__add-folder-button:hover {
-    background-color: #29862e;
+  .ItemListNav_del-inventory-button {
+    margin: 20px auto;
+  }
+  .ItemListNav_add-inventory-button:hover {
+    background-color: #FFB72F;
+    color: white;
+  }
+  .ItemListNav_del-inventory-button:hover {
+    background-color: #ff0000;
     color: white;
   }
   
-  .NoteListNav__folder-link {
-    background-color: #030f1f;
+  .ItemListNav_inventory-link {
+    background-color: #00264d;
     color: #b5b3b3;
     display: block;
     font-family: var(--custom-font);
@@ -29,15 +36,15 @@
     padding: 8px 16px;
     text-decoration: none;
   }
-  .NoteListNav__folder-link:hover {
+  .ItemListNav_inventory-link:hover {
     color: #FFB72F;
     cursor: pointer;
   }
-  .NoteListNav__folder-link.active {
+  .ItemListNav_inventory-link.active {
     background-color: #102541;
   }
   
-  .NoteListNav__num-notes {
+  .ItemListNav_num-items {
     color: #adadad;
     display: block;
     float: right;

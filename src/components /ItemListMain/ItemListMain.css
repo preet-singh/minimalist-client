@@ -10,11 +10,11 @@
     margin: 0 10px;
   }
   
-  .ItemListMain_add-note-button {
-    margin: 0 auto 20px;
+  .ItemListMain_add-item-button {
+    margin: 0 120px 20px;
   }
-  .ItemListMain_add-note-button:hover {
-    background-color: #29862e;
+  .ItemListMain_add-item-button:hover {
+    background-color: #00264d;
     color: white;
   }
   

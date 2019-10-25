@@ -31,12 +31,12 @@ export default class ItemPageMain extends React.Component {
         />
         <div className='ItemPageMain_description'>
           {item.item_description.split(/\n \r|\n/).map((para, i) =>
-            <p key={i}>{para}</p>
+            <p key={i}>Description: {para}</p>
           )}
         </div>
         <div className='ItemPageMain_action'>
           {item.item_action.split(/\n \r|\n/).map((para, i) =>
-            <p key={i}>{para}</p>
+            <p key={i}>Action: {para}</p>
           )}
         </div>
       </section>

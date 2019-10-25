@@ -7,5 +7,5 @@ export default React.createContext({
   deleteInventory: () => {},
   addItem: () => {},
   deleteItem: () => {},
-  editItem: () => {},
+  updateItem: () => {},
 })

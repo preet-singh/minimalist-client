@@ -1,5 +1,4 @@
-
-.RegistrationForm {
+.LoginForm {
     border-radius: 1px solid black;
     position: fixed;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
@@ -9,8 +8,19 @@
     margin-right: auto;
 }
 
+/* [type=password], [type=username] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+} */
 
-.register-button {
+.button {
     background-color: #FA824C;
     border: none;
     padding: 10px;

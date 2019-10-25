@@ -1,12 +1,12 @@
 
 .ItemPageMain {
-    background-color: #efefef;
+    background-color: #c2c2d6;
     height: 100%;
     padding: 10px;
     width: 100%;
   }
   
-  .ItemPageMain__description {
+  .ItemPageMain_description {
     color: #3a3939;
     max-width: 380px;
   }

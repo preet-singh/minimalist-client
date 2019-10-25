@@ -9,6 +9,7 @@ export default function MinimalistForm(props) {
       className={['Minimalist-form', className].join(' ')}
       action='#'
       {...otherProps}
+    />
   )
 }
 

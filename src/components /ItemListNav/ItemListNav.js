@@ -11,12 +11,16 @@ import './ItemListNav.css';
 export default class ItemListNav extends React.Component {
   static defaultProps = {
     onDeleteInventory: () => {},
+    match: {
+      params: {}
+    }
   }
   static contextType = InventoryContext;
 
   handleDeleteInventory = (e) => {
     e.preventDefault();
-    const inventoryId = this.props.id
+    const inventoryId = Number(this.props.match.params.inventoryId)
+    console.log(inventoryId);
 
     fetch(`${config.API_ENDPOINT}/inventory/${inventoryId}`, {
       method: "DELETE",
@@ -26,11 +30,12 @@ export default class ItemListNav extends React.Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
-        else return res.json();
+        else return undefined;
       })
       .then(() => {
         this.context.deleteInventory(inventoryId)
         this.props.onDeleteInventory(inventoryId)
+        this.props.history.push('/');
       })
       .catch(error => {
         console.error({ error });
@@ -38,6 +43,7 @@ export default class ItemListNav extends React.Component {
   };
   render() {
     const { inventory=[], items=[] } = this.context
+    console.log(inventory);
     return (
       <div className='ItemListNav'>
         <ul className='ItemListNav_list'>
@@ -70,7 +76,7 @@ export default class ItemListNav extends React.Component {
         <div className='ItemListNav_button-wrapper' key={Number(inventory.id)} >
           <Button
             tag={Link}
-            to={`/inventory/${inventory.id}`}
+            to={`/inventory`}
             type='button'
             className='ItemListNav_del-inventory-button'
             onClick={this.handleDeleteInventory}
@@ -86,5 +92,7 @@ export default class ItemListNav extends React.Component {
 }
 
 ItemListNav.propTypes = {
-  onDeleteInventory: PropTypes.func.isRequired
+  onDeleteInventory: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }

@@ -22,26 +22,26 @@ describe(`ItemListMain component`, () => {
         {
           "id": "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Kitchen",
-          "inventoryId": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
-          "content": "Corporis accusamus placeat.\n \rUnde."
+          "inventoryId": "THIS_INVEN_ID",
+          "description": "Corporis accusamus placeat.\n \rUnde."
         },
         {
           "id": "d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Clothing",
           "inventoryId": "THIS_INVEN_ID",
-          "content": "Eos\n \rlaudantium."
+          "description": "Eos\n \rlaudantium."
         },
         {
           "id": "d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Bedding",
-          "inventoryId": "THIS_FOLDER_ID",
-          "content": "Occaecati dignissimos\nvoluptatum nihil."
+          "inventoryId": "THIS_INVEN_ID",
+          "description": "Occaecati dignissimos\nvoluptatum nihil."
         },
         {
           "id": "d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Birds",
-          "inventoryId": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
-          "content": "Eum culpa odit."
+          "inventoryId": "THIS_INVEN_ID",
+          "description": "Eum culpa odit."
         },
       ]
     }
