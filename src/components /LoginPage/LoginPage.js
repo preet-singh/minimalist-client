@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Input } from '../../utils/utils';
+import { Button, Input, Section } from '../../utils/utils';
 import AuthApiService from '../../services/auth-api-service';
-import { Section } from '../../utils/utils'
 import './LoginPage.css';
 
 export default class LoginForm extends Component {

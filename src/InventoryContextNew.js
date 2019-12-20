@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 
 
 const InventoryContextNew = React.createContext({
+  landing: false,
   inventories: [],
   items: [],
   error: null,
+  setLanding: () => {},
+  setItem: () => {},
   setError: () => {},
   clearError: () => { },
   addInventory: () => {},
@@ -12,13 +15,14 @@ const InventoryContextNew = React.createContext({
   addItem: () => {},
   deleteItem: () => {},
   editItem: () => {},
+  getItem: () => {},
 })
 
 export default InventoryContextNew
 
 export class InventoryProvider extends Component {
     state = {
-        inventory: [],
+        inventories: [],
         items: [],
         error: null
       }
@@ -32,12 +36,20 @@ export class InventoryProvider extends Component {
     this.setState({ error: null })
   }
 
-  setInventory = inventory => {
-    this.setState({ inventory })
+  setLanding = landing => {
+    this.setState({ landing })
   }
 
-  setItem = item => {
-    this.setState({ item })
+  // setItem = item => {
+  //   this.setState({ item })
+  // }
+
+  // getItem = item => {
+  //   this.setState({ item })
+  // }
+
+  setInventory = inventory => {
+    this.setState({ inventory })
   }
 
 
@@ -80,6 +92,7 @@ export class InventoryProvider extends Component {
   render() {
     const value = {
       inventory: this.state.inventory,
+      landing: this.state.landing,
       items: this.state.items,
       addInventory: this.addNewInventory,
       deleteInventory: this.handleDeleteInventory,
@@ -89,6 +102,7 @@ export class InventoryProvider extends Component {
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
+      setLanding: this.setLanding,
     }
     return (
       <InventoryContextNew.Provider value={value}>

@@ -4,6 +4,7 @@
 
 .ItemPageNav__back-button:hover {
     background-color: #FFB72F;
+    box-shadow: 0 9px 12px 0 white,0 2px 5px 0 whitesmoke;
   }
   
 .ItemPageNav__inventory-name {

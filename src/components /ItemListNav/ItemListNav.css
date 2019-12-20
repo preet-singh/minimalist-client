@@ -12,17 +12,23 @@
   
   .ItemListNav_add-inventory-button {
     margin: 20px auto;
+    float: left;
+    position: absolute;
   }
   .ItemListNav_del-inventory-button {
     margin: 20px auto;
+    float: right;
+    position: relative;
   }
   .ItemListNav_add-inventory-button:hover {
     background-color: #FFB72F;
     color: white;
+    box-shadow: 0 9px 12px 0 white,0 2px 5px 0 whitesmoke;
   }
   .ItemListNav_del-inventory-button:hover {
     background-color: #ff0000;
     color: white;
+    box-shadow: 0 9px 12px 0 white,0 2px 5px 0 whitesmoke;
   }
   
   .ItemListNav_inventory-link {
@@ -35,6 +41,7 @@
     max-width: 180px;
     padding: 8px 16px;
     text-decoration: none;
+    border-radius: 40px;
   }
   .ItemListNav_inventory-link:hover {
     color: #FFB72F;

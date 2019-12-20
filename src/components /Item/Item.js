@@ -6,6 +6,7 @@ import config from '../../config';
 import './Item.css';
 import PropTypes from 'prop-types';
 
+
 export default class Item extends React.Component {
   static defaultProps ={
     onDeleteItem: () => {},
@@ -37,8 +38,8 @@ export default class Item extends React.Component {
       })
   }
 
-  handleClickUpdate = (e, newItemFields) => {
-    e.preventDefault()
+  handleClickUpdate = (item, newItemFields) => {
+
     const itemId = this.props.id
 
     fetch(`${config.API_ENDPOINT}/items/${itemId}`, {
@@ -50,7 +51,7 @@ export default class Item extends React.Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-          else return res.json()
+          
       })
       .then((data) => {
         newItemFields(data)
@@ -79,14 +80,14 @@ export default class Item extends React.Component {
           <FontAwesomeIcon icon='trash-alt' />
           {' '}
         </button>
-        <button
+        {/* <button 
           className='Item_edit'
           type='button'
           onClick={this.handleClickUpdate}
         >
           <FontAwesomeIcon icon='edit' />
           {' '}
-        </button>
+        </button> */}
       </div>
     )
   }

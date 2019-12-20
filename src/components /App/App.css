@@ -41,4 +41,54 @@
     height: calc(100vh - 120px);
     overflow: auto;
   }
+
+  .Header .about-link {
+    font-weight: bold;
+    margin-right: 15px;
+    display: inline;
+}
+
+.Header .log-button {
+    margin-left: 15px;
+}
+
+.under-bar {
+    display: flex;
+}
+
+.About_nav {
   
+  display: inline;
+}
+  
+@media screen and (min-width: 768px){
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .desktop-column {
+    flex-direction: column;
+  }
+
+  .desktop-row {
+    flex-direction: row;
+  }
+
+  .mobile.hide {
+    display: block;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .tablet-hide {
+    display: none;
+  }
+
+}

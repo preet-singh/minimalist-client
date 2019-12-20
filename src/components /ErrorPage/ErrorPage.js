@@ -14,7 +14,7 @@ export default class ErrorPage extends Component {
   render() {
       if (this.state.error) {
           return (
-              <Section className="error-page">
+              <Section className="NotFoundPage">
                   <h1>Something seems to have gone wrong</h1>
                   <p>Try refreshing the page</p>
               </Section>

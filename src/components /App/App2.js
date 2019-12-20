@@ -1,39 +1,85 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../Header/Header';
+//import Header from '../Header/Header';
 //import PrivateRoute from '../../routes/PrivateRoute';
 //import PublicRoute from '../../routes/PublicRoute';
 import ItemPageMain from '../ItemPageMain/ItemPageMain';
 //import ItemListNav from '../ItemListNav/ItemListNav';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import RegPage from '../RegistrationPage/RegPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import TokenService from '../../services/token-service';
-import AuthApiService from '../../services/auth-api-service';
+//import AuthApiService from '../../services/auth-api-service';
 import IdleService from '../../services/idle-service';
 import InventoryListPage from '../../routes/InventoryListPage';
-//import './App.css'
-
-
+import HomePage from '../HomePage /HomePage';
+import config from '../../config';
+import InventoryContext from '../../InventoryContext';
+///import './App.css'
 
 class App extends Component {
-  state = { hasError: false }
-
-  static getDerivedStateFromError(error) {
-    console.error(error)
-    return { hasError: true }
+  state = {
+    inventory: [],
+    items: []
   }
+  fetchInventoryAndItems = () => {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/items`),
+      fetch(`${config.API_ENDPOINT}/inventory`)
+    ])
+      .then(([itemsRes, inventoryRes]) => {
+        if (!itemsRes.ok)
+          return itemsRes.json().then(e => Promise.reject(e));
+        if (!inventoryRes.ok)
+          return inventoryRes.json().then(e => Promise.reject(e));
 
-  componentDidMount() {
-    IdleService.setIdleCallback(this.logoutFromIdle)
-    if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets()
-      TokenService.queueCallbackBeforeExpiry(() => {
-        AuthApiService.postRefreshToken()
+        return Promise.all([itemsRes.json(), inventoryRes.json()]);
       })
-    }
+      .then(([items, inventory]) => {
+        this.setState({ items, inventory });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
   }
+
+  handleDeleteItem = itemId => {
+    this.setState({
+      items: this.state.items.filter(item => item.id !== itemId)
+    });
+  }
+
+  handleDeleteInventory = inventoryId => {
+    this.setState({
+      inventory: this.state.inventory.filter(inventory => inventory.id !== inventoryId)
+    })
+  }
+
+  addNewItem = newItem => {
+    this.setState({
+      items: this.state.items,
+      newItem
+    }, this.componentDidMount());
+  }
+
+  updateItem = updateItem => {
+    this.setState({
+      items: this.state.items.map(i => 
+        (i.id !== updateItem.id) ? i : updateItem
+        )
+    });
+  }
+
+  addNewInventory = newInventory => {
+    this.setState({
+      inventory: [
+        ...this.state.inventory,
+        newInventory
+      ]
+    }, this.componentDidMount());
+  }
+
 
   componentWillUnmount() {
     IdleService.unRegisterIdleResets()
@@ -48,42 +94,31 @@ class App extends Component {
   }
 
   render() {
+    const value = {
+      inventory: this.state.inventory,
+      items: this.state.items,
+      addInventory: this.addNewInventory,
+      deleteInventory: this.handleDeleteInventory,
+      deleteItem: this.handleDeleteItem,
+      addItem: this.addNewItem,
+      updateItem: this.updateItem,
+    };
+
     return (
-      <div className='App'>
-        <header className='App__header'>
-          <Header />
-        </header>
-        <main className='App__main'>
-          {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
-          <Switch>
-            <Route
-              exact
-              path={'/'}
-              component={LandingPage}
-            />
-            <Route
-              exact
-              path={'/inventory'}
-              component={InventoryListPage}
-            />
-            <Route
-              path={'/login'}
-              component={LoginPage}
-            />
-            <Route
-              path={'/register'}
-              component={RegistrationPage}
-            />
-            <Route
-              path={'/item/:itemId'}
-              component={ItemPageMain}
-            />
-            <Route
-              component={ErrorPage}
-            />
-          </Switch>
-        </main>
-      </div>
+      <InventoryContext.Provider value={value}>
+        <div className='App'>
+            <Switch>
+              <Route exact path={'/'} component={LandingPage} />
+              <Route path={'/login'} component={LoginPage} />
+              <Route path={'/register'} component={RegPage} />
+              <Route path='/home' render={ () => <HomePage fetch = {this.fetchInventoryAndItems} /> } />
+              <Route path={'/inventory'} component={InventoryListPage} />
+              <Route path={'/item/:itemId'} component={ItemPageMain} />
+              <Route component={ErrorPage} />
+            </Switch>
+        </div>
+      </InventoryContext.Provider>
+
     )
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Item from '../Item/Item'
 import Button from '../Button/Button'
@@ -20,11 +20,9 @@ export default class ItemListMain extends React.Component {
     const { inventoryId } = this.props.match.params
     const { items=[] } = this.context
     const itemsForInventory = getItemsForInventory(items, inventoryId)
-    // console.log(inventoryId);
-    // console.dir(items);
-    // console.dir(itemsForInventory);
     return (
       <section className='ItemListMain'>
+        <Route path="/" />
         <ul>
           {itemsForInventory.map(item =>
             <li key={Number(item.id)}>

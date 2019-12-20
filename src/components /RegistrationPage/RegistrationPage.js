@@ -7,9 +7,9 @@ import AuthApiService from '../../services/auth-api-service';
 export default class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
-    history: {
-      push: () => {},
-    },
+    // history: {
+    //   push: () => {},
+    // },
   }
 
   state = { error: null }
@@ -37,10 +37,10 @@ export default class RegistrationForm extends Component {
       })
   }
 
-  handleRegistrationSuccess = user => {
-    const { history } = this.props
-    history.push('/login')
-  }
+  // handleRegistrationSuccess = user => {
+  //   // const { history } = this.props
+  //   this.props.history.push('/login')
+  // }
 
   render() {
     const { error } = this.state
@@ -48,7 +48,7 @@ export default class RegistrationForm extends Component {
       <Section className="RegistrationPage">
         <form
           className='RegistrationForm'
-          onRegistrationSuccess={this.handleRegistrationSuccess}
+          // onRegistrationSuccess={this.handleRegistrationSuccess}
           onSubmit={this.handleSubmit}
         >
           <div role='alert'>

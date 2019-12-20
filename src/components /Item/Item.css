@@ -1,6 +1,5 @@
 
 .Item {
-    --note-height: 88px;
     background-color: #00264d;
     color: #cacaca;
     height: 70px;
@@ -8,15 +7,17 @@
     max-width: 300px;
     padding: 8px 0 8px 8px;
     position: relative;
+    border-radius: 20px;
   }
   
   .Item_delete {
     color: #ff0000;
-    position: absolute;
+    position: relative;
     bottom: 0;
     background-color:#00264d;
     border: 0;
     font-size: 15px;
+    float: right;
   }
 
   .Item_delete:hover {
@@ -45,8 +46,16 @@
   .Item_edit {
     color: #00b300;
     float: right;
-    position: absolute;
+    position: relative;
     background-color:#00264d;
     border: 0;
     font-size: 15px;
+    transform-origin: right bottom;
   }  
+
+  .Item_edit:hover {
+    background-color: #00b300;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }

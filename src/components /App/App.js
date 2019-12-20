@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import InventoryContext from '../../InventoryContext'
 import ErrorPage from '../ErrorPage/ErrorPage';
 import LandingPage from '../LandingPage/LandingPage.js';
@@ -9,17 +9,26 @@ import ItemListNav from '../ItemListNav/ItemListNav';
 import ItemListMain from '../ItemListMain/ItemListMain';
 import ItemPageMain from '../ItemPageMain/ItemPageMain';
 import ItemPageNav from '../ItemPageNav/ItemPageNav';
-import LoginPage from '../LoginPage/LoginPage';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import LogPage from '../LoginPage/LogPage';
+import RegPage from '../RegistrationPage/RegPage';
 import config from '../../config';
 import './App.css';
 
 
 class App extends Component {
-  state = {
-    inventory: [],
-    items: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      inventory: [],
+      items: [],
+      landing: false,
+    }
   }
+  // state = {
+  //   inventory: [],
+  //   items: [],
+  //   landing: false,
+  // }
   componentDidMount(){
     Promise.all([
       fetch(`${config.API_ENDPOINT}/items`),
@@ -77,6 +86,10 @@ class App extends Component {
     }, this.componentDidMount());
   }
 
+  setLanding = landing => {
+    this.setState({ landing })
+  }
+
   renderNavRoutes(){
     return (
       <>
@@ -106,8 +119,8 @@ class App extends Component {
             component={ItemListMain}
           />
         ))}
-        <Route path="/login" component={LoginPage} />
-        <Route path="/registration" component={RegistrationPage} />
+        <Route path="/login" component={LogPage} />
+        <Route path="/registration" component={RegPage} />
         <Route path="/item/:itemId" component={ItemPageMain} />
         <Route path='/add-inventory' component={AddInventory} />
         <Route path='/add-item' component={AddItem} />
@@ -124,22 +137,30 @@ class App extends Component {
       deleteItem: this.handleDeleteItem,
       addItem: this.addNewItem,
       updateItem: this.updateItem,
+      setLanding: this.setLanding,
+      landing: this.state.landing,
     };
     return (
       <InventoryContext.Provider value={value}>
         <div className="App">
+          <LandingPage />      
           <nav className="App_nav">{this.renderNavRoutes()}</nav>
           <header className="App_header">
             <h1>
               <Link to="/">Minimalist</Link>{' '}
-              <Link to="/registration">Register</Link>{' '}
-              <Link to="/login">Login</Link>{' '}
+              <div className="About_nav">
+                <Link to="" onClick={(e) => { 
+                  window.localStorage.removeItem('minimalistSeenLanding');
+                  this.setLanding(false);
+                }}>About</Link>{' '}
+              </div>
             </h1>
           </header>
-          {/* <LandingPage /> */}
+          
           <ErrorPage>
             <main className="App_main">{this.renderMainRoutes()}</main>
           </ErrorPage>
+          
         </div>
       </InventoryContext.Provider>
     );

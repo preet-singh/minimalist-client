@@ -1,48 +1,49 @@
 // import React, { Component } from 'react';
 // import config from '../../config';
 // import InventoryContext from '../../InventoryContext';
-// import PropTypes from 'prop-types'
+// import AddItem from '../AddItem/AddItem';
+// import PropTypes from 'prop-types';
 
 // export default class EditItem extends Component {
+//   static defaultProps = {
+//     onUpdateItem: () => {},
+//   }
 
 //   state = {
-//     name: '',
-//     description: '',
-//     inventoryId: '',
-//     action: '',
+//     error: null
 //   }
 
 //   static contextType = InventoryContext;
 
-//   handleAddItem = (e) => {
-//     e.preventDefault();
+//   handleClickUpdate = (e) => {
+//     e.preventDefault()
+//     const updatedItem = {
+//         item_name: this.state.name,
+//         item_description: this.state.description,
+//         inventory_id: this.state.inventoryId,
+//         item_action: this.state.action,
+//       };
+//     const itemId = this.props.id
 
-//     const newItem = {
-//       item_name: this.state.name,
-//       item_description: this.state.description,
-//       inventory_id: this.state.inventoryId,
-//       item_action: this.state.action,
-//       //date_modified: this.state.modified
-//     };
-
-//     fetch(`${config.API_ENDPOINT}/items`, {
-//       method: "POST",
+//     fetch(`${config.API_ENDPOINT}/items/${itemId}`, {
+//       method: 'PATCH',
 //       headers: {
-//         "content-type": "application/json"
+//         'content-type': 'application/json'
 //       },
-//       body: JSON.stringify(newItem)
+//       body: JSON.stringify(updatedItem)
 //     })
 //       .then(res => {
-//         if (!res.ok) return res.json().then(e => Promise.reject(e));
+//         if (!res.ok)
+//           return res.json().then(e => Promise.reject(e))
 //       })
-//       .then(() => {
-//         this.context.addItem(newItem);
-//         this.props.history.push('/');
+//       .then((data) => {
+//         this.context.updateItem(data)
+//         this.props.onUpdateItem(data)
 //       })
 //       .catch(error => {
-//         alert({ error });
-//       });
-//   };
+//         console.error({ error })
+//       })
+//   }
 
 //   getItemName = (e) => {
 //     this.setState({ name: e.target.value });
@@ -59,10 +60,6 @@
 //   getItemAction = (e) => {
 //       this.setState({ action: e.target.value });
 //   }
-
-// //   getItemModified = (e) => {
-// //     this.setState({ modified: new Date().toLocaleString() });
-// //   }
 
 //   validateItemName = () => {
 //     let item = this.state.item;
