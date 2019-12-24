@@ -6,6 +6,7 @@ exports[`ItemPageMain component renders a .ItemPageMain by default 1`] = `
 >
   <Item
     onDeleteItem={[Function]}
+    onUpdateItem={[Function]}
   />
   <div
     className="ItemPageMain_description"
@@ -13,6 +14,7 @@ exports[`ItemPageMain component renders a .ItemPageMain by default 1`] = `
     <p
       key="0"
     >
+      Description: 
       test desc
     </p>
   </div>
@@ -22,6 +24,7 @@ exports[`ItemPageMain component renders a .ItemPageMain by default 1`] = `
     <p
       key="0"
     >
+      Action: 
       test action
     </p>
   </div>
@@ -31,6 +34,7 @@ exports[`ItemPageMain component renders a .ItemPageMain by default 1`] = `
 exports[`ItemPageMain component renders a Item with item prop 1`] = `
 <Item
   onDeleteItem={[Function]}
+  onUpdateItem={[Function]}
 />
 `;
 

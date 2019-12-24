@@ -51,11 +51,6 @@ exports[`NoteListNav component renders a .ItemListNav by default 1`] = `
       <br />
       Inventory
     </NavButton>
-  </div>
-  <div
-    className="ItemListNav_button-wrapper"
-    key="NaN"
-  >
     <NavButton
       className="ItemListNav_del-inventory-button"
       onClick={[Function]}

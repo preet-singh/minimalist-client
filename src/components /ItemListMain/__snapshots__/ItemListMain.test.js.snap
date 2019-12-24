@@ -4,6 +4,9 @@ exports[`ItemListMain component renders a .ItemListMain by default 1`] = `
 <section
   className="ItemListMain"
 >
+  <Route
+    path="/"
+  />
   <ul />
   <div
     className="ItemListMain_button-container"

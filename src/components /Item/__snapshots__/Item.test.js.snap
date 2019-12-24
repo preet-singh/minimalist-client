@@ -36,7 +36,6 @@ exports[`Item component renders a .Item by default 1`] = `
       transform={null}
     />
      
-    delete
   </button>
 </div>
 `;
@@ -79,7 +78,6 @@ exports[`Item component renders the Item given props 1`] = `
       transform={null}
     />
      
-    delete
   </button>
 </div>
 `;
