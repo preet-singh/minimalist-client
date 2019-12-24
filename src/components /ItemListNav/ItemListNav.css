@@ -11,13 +11,15 @@
   }
   
   .ItemListNav_add-inventory-button {
-    margin: 20px auto;
-    float: left;
-    position: absolute;
+    /* margin: 20px auto; */
+    /* float: left; */
+    position: static;
+
   }
   .ItemListNav_del-inventory-button {
-    margin: 20px auto;
-    float: right;
+    /* margin: 20px auto; */
+    /* float: right; */
+    clear: both;
     position: relative;
   }
   .ItemListNav_add-inventory-button:hover {
@@ -57,4 +59,66 @@
     float: right;
     font-size: 10px;
   }
+  @media screen and (min-width: 320px) {
+    .ItemListNav_list {
+      list-style-type: none;
+      margin: 130px 0 0;
+      padding: 0;
+    }
+    .ItemListNav_inventory-link {
+      font-size: 10px;
+      margin: 0 0 8px auto;
+      max-width: 180px;
+      padding: 15px 6px;
+    }
+    .ItemListNav_num-items {
+      color: #73e600;
+      display: block;
+      float: right;
+      font-size: 10px;
+    }
+    .ItemListNav_button-wrapper {
+      margin: 5px 5px 5px 5px;
+      max-width: 75%;
+      /* padding: 15px; */
+    }
+    .ItemListNav_add-inventory-button {
+      max-width: 75%;
+      font-size: 10px;
+
+    }
+    .ItemListNav_del-inventory-button {
+      max-width: 75%;
+      font-size: 10px;
+
+    }
+  } 
+  /* @media screen and (min-width: 375px) {
+    .ItemListNav_inventory-link {
+      font-size: 12px;
+
+    }
+  }
+  @media screen and (min-width: 425px) {
+    .ItemListNav_inventory-link {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-img {
+      width: 550px;
+      height: 320px;
+      margin: 3% auto 3% auto;
+    }
+}*/
+
+@media screen and (min-width: 1100px) {
+  .ItemListNav_button-wrapper {
+    /* margin: 5px 5px 5px 5px; */
+    min-width: 75%;
+    /* padding: 15px; */
+  }
+}
+
   

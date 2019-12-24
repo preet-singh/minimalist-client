@@ -72,8 +72,7 @@ export default class ItemListNav extends React.Component {
             <br />
             Inventory
           </Button>
-        </div>
-        <div className='ItemListNav_button-wrapper' key={Number(inventory.id)} >
+
           <Button
             tag={Link}
             to={`/inventory`}
@@ -86,6 +85,19 @@ export default class ItemListNav extends React.Component {
             Inventory
           </Button>
         </div>
+        {/* <div className='ItemListNav_button-wrapper-del' key={Number(inventory.id)} >
+          <Button
+            tag={Link}
+            to={`/inventory`}
+            type='button'
+            className='ItemListNav_del-inventory-button'
+            onClick={this.handleDeleteInventory}
+          >
+            <FontAwesomeIcon icon='minus' /> 
+            <br />
+            Inventory
+          </Button>
+        </div> */}
       </div>
     )
   }

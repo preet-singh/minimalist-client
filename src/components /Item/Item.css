@@ -59,3 +59,43 @@
     cursor: pointer;
     font-weight: bold;
   }
+
+  @media screen and (min-width: 320px) {
+    .Item {
+      max-width: 200px;
+      height: 56px;
+    }
+    .Item_delete {
+      font-size: 10px;
+    }
+    .Item_title {
+      font-size: 12px;
+    }
+  }  
+
+  @media screen and (min-width: 425px) {
+    .Item {
+      max-width: 250px;
+      height: 60px;
+    }
+    .Item_delete {
+      font-size: 12px;
+    }
+    .Item_title {
+      font-size: 16px;
+    }
+  }  
+
+  @media screen and (min-width: 768px) {
+    .Item {
+      max-width: 280px;
+      height: 66px;
+    }
+    .Item_delete {
+      font-size: 14px;
+    }
+    .Item_title {
+      font-size: 18px;
+    }
+
+}  

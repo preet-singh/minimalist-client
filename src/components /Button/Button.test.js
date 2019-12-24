@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Button from './Button'
 
-describe(`CircleButton component`, () => {
+describe(`Button component`, () => {
   const props = {
     tag: 'a',
     className: 'test-class-name',
@@ -11,12 +11,12 @@ describe(`CircleButton component`, () => {
     'data-other': 'test-other-prop'
   }
 
-  it('renders a button.CircleButton by default', () => {
+  it('renders a button.Button by default', () => {
     const wrapper = shallow(<Button />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  it('renders the circle button from props', () => {
+  it('renders the button from props', () => {
     const wrapper = shallow(<Button {...props} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
