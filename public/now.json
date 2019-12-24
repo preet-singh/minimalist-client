@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "alias": "minimalist-app",
     "name": "preets-minimalist-client",
     "routes": [
         {
