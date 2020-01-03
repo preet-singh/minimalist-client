@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add inventory testing renders the user inventory 1`] = `
+<form
+  className="addItemOrInventory"
+  onSubmit={[Function]}
+>
+  <div>
+    <label
+      htmlFor="inventoryName"
+    >
+      New Inventory Name: 
+    </label>
+    <input
+      id="inventoryName"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <p
+      className="validationElement"
+    >
+      Inventory name is required
+    </p>
+    <button
+      disabled="Inventory name is required"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;

@@ -31,7 +31,7 @@ const exitIcon = icon(exit);
 		  window.localStorage.setItem('minimalistSeenLanding', true)}
          } />
           <div className="hero">
-            <h3>Start to organize, revatilize and socialze all in one place</h3>
+            <h3>Start to organize, revitalize and socialize all in one place</h3>
           </div>
           <div className="section-flex">
             <section className="section-one">
@@ -41,7 +41,7 @@ const exitIcon = icon(exit);
             <hr className="underline"></hr>
             <section className="section-two">
               <h2 className="section-h2">Create items within inventory</h2>
-              <p className="section-p">Within seperate inventory create as many items as you would like, delete them as you declutter</p>
+              <p className="section-p">Within separate inventory create as many items as you would like, delete them as you declutter</p>
             </section>
             <hr className="underline"></hr>
 			<section className="section-three">
