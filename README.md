@@ -22,3 +22,9 @@ Minimalist is a React application that provides users a platform to take invento
 * CSS3
 * ReactJS
 
+## Screenshot
+#### Main Page
+![](public/mini.png)
+
+
+
